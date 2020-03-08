@@ -1,0 +1,56 @@
+name: ng-my-page-push-master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-angular:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: change directory
+        run: cd ng-component
+
+      - name: install
+        run: npm install
+
+      - name: build
+        run: npm run build-storybook
+
+      - name: deploy
+        timeout-minutes: 5
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ../docs/angular
+
+      - name: slack-notice-failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: ci-info
+          SLACK_COLOR: '#3278BD'
+          SLACK_MESSAGE: 'Deploy failure :umbrella_with_rain_drops:'
+          SLACK_TITLE: failure
+          SLACK_USERNAME: ci_bot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_TOKEN }}
+
+      - name: slack-notice-success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: ci-info
+          SLACK_COLOR: '#3278BD'
+          SLACK_MESSAGE: 'Deploy success :sunny:'
+          SLACK_TITLE: success
+          SLACK_USERNAME: ci_bot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_TOKEN }}
