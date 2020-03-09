@@ -7,5 +7,5 @@ export default {
 
 export const ButtonDefault = () => ButtonComponent({text: 'default'});
 export const ButtonSmall = () => ButtonComponent({text: 'small', size: 'small'});
-export const ButtonLarge = () => ButtonComponent({text: 'default', size: 'large'});
+export const ButtonLarge = () => ButtonComponent({text: 'large', size: 'large'});
 export const ButtonPrimary = () => ButtonComponent({text: 'primary', types: 'primary'});
