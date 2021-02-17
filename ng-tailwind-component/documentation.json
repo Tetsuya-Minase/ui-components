@@ -173,7 +173,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b00930cce30bc0171c3ed94529e819d3-1",
+            "id": "component-ButtonComponent-5f26d1fb839829db65aa71c92fb9a8fb-1",
             "file": "src/app/component/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -192,29 +192,27 @@
             "inputsClass": [
                 {
                     "name": "size",
-                    "defaultValue": "'small'",
-                    "line": 10,
-                    "type": "\"small\" | \"large\""
+                    "line": 11,
+                    "type": "ButtonSize | undefined"
                 },
                 {
                     "name": "text",
                     "defaultValue": "''",
-                    "line": 9,
+                    "line": 10,
                     "type": "string"
                 },
                 {
                     "name": "type",
-                    "defaultValue": "'primary'",
-                    "line": 11,
-                    "type": "\"primary\" | \"error\" | \"warning\""
+                    "line": 12,
+                    "type": "ButtonColor | undefined"
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "buttonClasses",
-                    "defaultValue": "['button']",
-                    "type": "string[]",
+                    "name": "buttonType",
+                    "defaultValue": "'default'",
+                    "type": "ButtonType",
                     "optional": false,
                     "description": "",
                     "line": 13
@@ -235,7 +233,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text: string = '';\n  @Input() size: 'small' | 'large' = 'small';\n  @Input() type: 'primary' | 'error' | 'warning' = 'primary';\n\n  buttonClasses: string[] = ['button'];\n\n  ngOnInit() {\n    switch (this.size) {\n      case 'small':\n        this.buttonClasses.push('button--small');\n        break;\n      case 'large':\n        this.buttonClasses.push('button--large');\n        break;\n      default:\n        const _neverSize: never = this.size;\n        console.error(`${_neverSize} is invalid.`);\n    }\n    switch (this.type) {\n      case 'primary':\n        this.buttonClasses.push('button--primary');\n        break;\n      case 'error':\n        this.buttonClasses.push('button--error');\n        break;\n      case 'warning':\n        this.buttonClasses.push('button--warning');\n        break;\n      default:\n          const _neverType: never = this.type;\n        console.error(`${_neverType} is invalid.`);\n    }\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport { ButtonSize, ButtonColor, ButtonType } from './button.component.d';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text: string = '';\n  @Input() size: ButtonSize | undefined;\n  @Input() type: ButtonColor | undefined;\n  buttonType: ButtonType = 'default';\n\n  ngOnInit() {\n    if (this.size === 'small') {\n      if (!this.type) {\n        this.buttonType = 'small';\n        return;\n      }\n      switch (this.type) {\n        case 'primary':\n          this.buttonType = 'small-primary';\n          return;\n        case 'error':\n          this.buttonType = 'small-error';\n          return;\n        case 'warning':\n          this.buttonType = 'small-warning';\n          return;\n      }\n    } else if (this.size === 'large') {\n      if (!this.type) {\n        this.buttonType = 'large';\n        return;\n      }\n      switch (this.type) {\n        case 'primary':\n          this.buttonType = 'large-primary';\n          return;\n        case 'error':\n          this.buttonType = 'large-error';\n          return;\n        case 'warning':\n          this.buttonType = 'large-warning';\n          return;\n      }\n    } else {\n      if (!this.type) {\n        this.buttonType = 'default';\n        return;\n      }\n      switch (this.type) {\n        case 'primary':\n          this.buttonType = 'default-primary';\n          return;\n        case 'error':\n          this.buttonType = 'default-error';\n          return;\n        case 'warning':\n          this.buttonType = 'default-warning';\n          return;\n      }\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -250,7 +248,7 @@
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "ButtonComponent-1",
-            "templateData": "<button [ngClass]=\"buttonClasses\">{{text}}</button>"
+            "templateData": "<ng-container [ngSwitch]=\"buttonType\">\n  <button *ngSwitchCase=\"'default'\" class=\"bg-white border border-black text-gray-800 rounded-lg text-2xl w-60 h-20\">{{text}}</button>\n  <button *ngSwitchCase=\"'small'\" class=\"bg-white border border-black text-gray-800 rounded-lg text-base w-28 h-12\">{{text}}</button>\n  <button *ngSwitchCase=\"'large'\" class=\"bg-white border border-black text-gray-800 rounded-lg text-4xl w-96 h-32\">{{text}}</button>\n  <button *ngSwitchCase=\"'default-primary'\" class=\"bg-blue-500 border border-blue-500 rounded-lg text-white text-2xl w-60 h-20\">{{text}}</button>\n  <button *ngSwitchCase=\"'default-error'\" class=\"bg-red-600 border border-red-600 rounded-lg text-white text-2xl w-60 h-20\">{{text}}</button>\n  <button *ngSwitchCase=\"'default-warning'\" class=\"bg-yellow-300 border border-yellow-300 rounded-lg text-2xl w-60 h-20\">{{text}}</button>\n  <button *ngSwitchCase=\"'small-primary'\" class=\"bg-blue-500 border border-blue-500 rounded-lg text-white text-base w-28 h-12\">{{text}}</button>\n  <button *ngSwitchCase=\"'small-error'\" class=\"bg-red-600 border border-red-600 rounded-lg text-white text-base w-28 h-12\">{{text}}</button>\n  <button *ngSwitchCase=\"'small-warning'\" class=\"bg-yellow-300 border border-yellow-300 rounded-lg text-base w-28 h-12\">{{text}}</button>\n  <button *ngSwitchCase=\"'large-primary'\" class=\"bg-blue-500 border border-blue-500 rounded-lg text-white text-4xl w-96 h-32\">{{text}}</button>\n  <button *ngSwitchCase=\"'large-error'\" class=\"bg-red-600 border border-red-600 rounded-lg text-white text-4xl w-96 h-32\">{{text}}</button>\n  <button *ngSwitchCase=\"'large-warning'\" class=\"bg-yellow-300 border border-yellow-300 rounded-lg text-4xl w-96 h-32\">{{text}}</button>\n</ng-container>\n"
         },
         {
             "name": "HeaderComponent",
@@ -496,6 +494,30 @@
                 "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'default'\n  }\n})"
             },
             {
+                "name": "ButtonError",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error button',\n    type: 'error'\n  }\n})"
+            },
+            {
+                "name": "ButtonErrorLarge",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error button large',\n    size: 'large',\n    type: 'error'\n  }\n})"
+            },
+            {
+                "name": "ButtonErrorSmall",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error small',\n    size: 'small',\n    type: 'error'\n  }\n})"
+            },
+            {
                 "name": "ButtonLarge",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -512,12 +534,52 @@
                 "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary button',\n    type: 'primary'\n  }\n})"
             },
             {
+                "name": "ButtonPrimaryLarge",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary button large',\n    size: 'large',\n    type: 'primary'\n  }\n})"
+            },
+            {
+                "name": "ButtonPrimarySmall",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary small',\n    size: 'small',\n    type: 'primary'\n  }\n})"
+            },
+            {
                 "name": "ButtonSmall",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/component/button/button.component.stories.ts",
                 "type": "",
                 "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'small button',\n    size: 'small'\n  }\n})"
+            },
+            {
+                "name": "ButtonWarning",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning button',\n    type: 'warning'\n  }\n})"
+            },
+            {
+                "name": "ButtonWarningLarge",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning button large',\n    size: 'large',\n    type: 'warning'\n  }\n})"
+            },
+            {
+                "name": "ButtonWarningSmall",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/button/button.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning small',\n    size: 'small',\n    type: 'warning'\n  }\n})"
             },
             {
                 "name": "context",
@@ -693,6 +755,30 @@
                     "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'default'\n  }\n})"
                 },
                 {
+                    "name": "ButtonError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error button',\n    type: 'error'\n  }\n})"
+                },
+                {
+                    "name": "ButtonErrorLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error button large',\n    size: 'large',\n    type: 'error'\n  }\n})"
+                },
+                {
+                    "name": "ButtonErrorSmall",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'error small',\n    size: 'small',\n    type: 'error'\n  }\n})"
+                },
+                {
                     "name": "ButtonLarge",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -709,12 +795,52 @@
                     "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary button',\n    type: 'primary'\n  }\n})"
                 },
                 {
+                    "name": "ButtonPrimaryLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary button large',\n    size: 'large',\n    type: 'primary'\n  }\n})"
+                },
+                {
+                    "name": "ButtonPrimarySmall",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'primary small',\n    size: 'small',\n    type: 'primary'\n  }\n})"
+                },
+                {
                     "name": "ButtonSmall",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/component/button/button.component.stories.ts",
                     "type": "",
                     "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'small button',\n    size: 'small'\n  }\n})"
+                },
+                {
+                    "name": "ButtonWarning",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning button',\n    type: 'warning'\n  }\n})"
+                },
+                {
+                    "name": "ButtonWarningLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning button large',\n    size: 'large',\n    type: 'warning'\n  }\n})"
+                },
+                {
+                    "name": "ButtonWarningSmall",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/button/button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: 'warning small',\n    size: 'small',\n    type: 'warning'\n  }\n})"
                 }
             ],
             "src/test.ts": [
@@ -933,6 +1059,36 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "ButtonError",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonErrorLarge",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonErrorSmall",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "ButtonLarge",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -953,7 +1109,57 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "ButtonPrimaryLarge",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonPrimarySmall",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "ButtonSmall",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonWarning",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonWarningLarge",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonWarningSmall",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
