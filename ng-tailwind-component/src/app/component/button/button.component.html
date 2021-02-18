@@ -1,0 +1,14 @@
+<ng-container [ngSwitch]="buttonType">
+  <button *ngSwitchCase="'default'" class="bg-white border border-black text-gray-800 rounded-lg text-2xl w-60 h-20">{{text}}</button>
+  <button *ngSwitchCase="'small'" class="bg-white border border-black text-gray-800 rounded-lg text-base w-28 h-12">{{text}}</button>
+  <button *ngSwitchCase="'large'" class="bg-white border border-black text-gray-800 rounded-lg text-4xl w-96 h-32">{{text}}</button>
+  <button *ngSwitchCase="'default-primary'" class="bg-blue-500 border border-blue-500 rounded-lg text-white text-2xl w-60 h-20">{{text}}</button>
+  <button *ngSwitchCase="'default-error'" class="bg-red-600 border border-red-600 rounded-lg text-white text-2xl w-60 h-20">{{text}}</button>
+  <button *ngSwitchCase="'default-warning'" class="bg-yellow-300 border border-yellow-300 rounded-lg text-2xl w-60 h-20">{{text}}</button>
+  <button *ngSwitchCase="'small-primary'" class="bg-blue-500 border border-blue-500 rounded-lg text-white text-base w-28 h-12">{{text}}</button>
+  <button *ngSwitchCase="'small-error'" class="bg-red-600 border border-red-600 rounded-lg text-white text-base w-28 h-12">{{text}}</button>
+  <button *ngSwitchCase="'small-warning'" class="bg-yellow-300 border border-yellow-300 rounded-lg text-base w-28 h-12">{{text}}</button>
+  <button *ngSwitchCase="'large-primary'" class="bg-blue-500 border border-blue-500 rounded-lg text-white text-4xl w-96 h-32">{{text}}</button>
+  <button *ngSwitchCase="'large-error'" class="bg-red-600 border border-red-600 rounded-lg text-white text-4xl w-96 h-32">{{text}}</button>
+  <button *ngSwitchCase="'large-warning'" class="bg-yellow-300 border border-yellow-300 rounded-lg text-4xl w-96 h-32">{{text}}</button>
+</ng-container>

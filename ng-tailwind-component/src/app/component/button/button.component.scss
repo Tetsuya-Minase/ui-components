@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+$button-bg: #fff;
+$button-border: #000;
+$button-font: #333;
+$button-bg-primary: #007bff;
+$button-border-primary: #007bff;
+$button-font-primary: #fff;
+
+.button {
+  width: 150px;
+  height: 50px;
+  background-color: $button-bg;
+  border: 1px solid $button-border;
+  color: $button-font;
+  font-size: 16px;
+}
+
+.button--primary {
+  background-color: $button-bg-primary;
+  border: 1px solid $button-border-primary;
+  border-radius: 5px;
+  color: $button-font-primary;
+}
+
+.button--small {
+  width: 75px;
+  height: 30px;
+  font-size: 10px;
+}
+
+.button--large {
+  width: 300px;
+  height: 100px;
+  font-size: 24px;
+}

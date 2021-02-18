@@ -19,7 +19,6 @@ const Wrapper = styled.div<Pick<ImageProps, 'width' | 'height'>>`
 const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
 `;
 
 export const ImageComponent: React.FC<ImageProps> = ({src, width, height}) => <Wrapper width={width} height={height}>
