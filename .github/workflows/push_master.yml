@@ -15,13 +15,10 @@ jobs:
       - name: setup
         uses: actions/setup-node@v1
         with:
-          node-version: 12
-
-      - name: change directory
-        run: cd ng-component
+          node-version: 14
 
       - name: install
-        run: npm install
+        run: cd ng-component && npm install
 
       - name: build
         run: npm run build-storybook
@@ -55,7 +52,7 @@ jobs:
           SLACK_USERNAME: ci_bot
           SLACK_WEBHOOK: ${{ secrets.SLACK_TOKEN }}
 
-  deploy-angular:
+  deploy-react:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -66,11 +63,8 @@ jobs:
         with:
           node-version: 12
 
-      - name: change directory
-        run: cd react-component
-
       - name: install
-        run: yarn install
+        run: cd react-component && yarn install
 
       - name: build
         run: yarn build-storybook
