@@ -27,9 +27,7 @@ jobs:
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./docs/angular
-
-      - name: check deploy
-        run: ls -la
+          destination_dir: angular
 
       - name: slack-notice-failure
         if: failure()
@@ -68,15 +66,13 @@ jobs:
         run: yarn install && yarn build-storybook
         working-directory: ./ng-component
 
-      - name: check deploy
-        run: ls -la
-
       - name: deploy
         timeout-minutes: 5
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./docs/react
+          destination_dir: react
 
       - name: slack-notice-failure
         if: failure()
