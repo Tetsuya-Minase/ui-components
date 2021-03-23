@@ -28,6 +28,9 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./docs/angular
 
+      - name: check deploy
+        run: ls -la
+
       - name: slack-notice-failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2.0.0
@@ -63,6 +66,10 @@ jobs:
 
       - name: install and build
         run: yarn install && yarn build-storybook
+        working-directory: ./ng-component
+
+      - name: check deploy
+        run: ls -la
 
       - name: deploy
         timeout-minutes: 5
