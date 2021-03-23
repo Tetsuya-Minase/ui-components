@@ -17,18 +17,16 @@ jobs:
         with:
           node-version: 14
 
-      - name: install
-        run: cd ng-component && npm install
-
-      - name: build
-        run: npm run build-storybook
+      - name: install and build
+        run: npm install && npm run build-storybook
+        working-directory: ./ng-component
 
       - name: deploy
         timeout-minutes: 5
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ../docs/angular
+          publish_dir: ./docs/angular
 
       - name: slack-notice-failure
         if: failure()
@@ -63,18 +61,15 @@ jobs:
         with:
           node-version: 12
 
-      - name: install
-        run: cd react-component && yarn install
-
-      - name: build
-        run: yarn build-storybook
+      - name: install and build
+        run: yarn install && yarn build-storybook
 
       - name: deploy
         timeout-minutes: 5
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ../docs/react
+          publish_dir: ./docs/react
 
       - name: slack-notice-failure
         if: failure()
