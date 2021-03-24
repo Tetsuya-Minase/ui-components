@@ -1,9 +1,17 @@
 <div class="accordion">
-  <input class="accordion-checkbox" type="checkbox" id="accordion-check"/>
-  <label class="accordion-title" for="accordion-check">
-    アコーディオンタイトル
-  </label>
-  <div class="accordion-detail">
-    ここに折りたたまれてる内容。
-  </div>
+  <ul class="accordion__list">
+    <li *ngFor="let item of accordionItemList; let i = index">
+      <input class="accordion__checkbox" type="checkbox" [id]="'accordion__check' + i"/>
+      <label class="accordion__title" [for]="'accordion__check' + i">
+        {{item.title}}
+      </label>
+      <div class="accordion__detail">
+        <ul>
+          <li *ngFor="let detail of item.detail">
+            {{detail}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-accordion',
@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accordion.component.scss']
 })
 
-export class AccordionComponent implements OnInit {
-  constructor() { }
+export class AccordionComponent {
+  @Input() accordionItemList: Array<{readonly title: string, readonly detail: string[]}>;
 
-  ngOnInit() { }
 }

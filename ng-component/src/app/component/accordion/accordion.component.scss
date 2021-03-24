@@ -1,4 +1,4 @@
-.accordion-title {
+.accordion__title {
   display: flex;
   justify-content: space-between;
   width: 300px;
@@ -7,15 +7,15 @@
     display: inline-block;
   }
 }
-.accordion-checkbox:checked + .accordion-title::after {
+.accordion__checkbox:checked + .accordion__title::after {
   content: '\ff0d';
 }
-.accordion-checkbox {
+.accordion__checkbox {
   display: none;
 }
-.accordion-detail {
+.accordion__detail {
   visibility: hidden;
 }
-.accordion-checkbox:checked + .accordion-title + .accordion-detail {
+.accordion__checkbox:checked + .accordion__title + .accordion__detail {
   visibility: visible;
 }
