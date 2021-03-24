@@ -1,0 +1,21 @@
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  &::after {
+    content: '\ff0b';
+    display: inline-block;
+  }
+}
+.accordion-checkbox:checked + .accordion-title::after {
+  content: '\ff0d';
+}
+.accordion-checkbox {
+  display: none;
+}
+.accordion-detail {
+  visibility: hidden;
+}
+.accordion-checkbox:checked + .accordion-title + .accordion-detail {
+  visibility: visible;
+}
