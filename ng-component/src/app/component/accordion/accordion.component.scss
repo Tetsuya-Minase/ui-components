@@ -14,8 +14,8 @@
   display: none;
 }
 .accordion__detail {
-  visibility: hidden;
+  display: none;
 }
 .accordion__checkbox:checked + .accordion__title + .accordion__detail {
-  visibility: visible;
+  display: block;
 }
