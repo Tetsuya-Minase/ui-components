@@ -13,9 +13,20 @@
 .accordion__checkbox {
   display: none;
 }
-.accordion__detail {
+@keyframes show{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+.accordion__detail__list {
   display: none;
 }
 .accordion__checkbox:checked + .accordion__title + .accordion__detail {
-  display: block;
+  & > .accordion__detail__list {
+    display: block;
+    animation: show 0.3s linear 0s;
+  }
 }
