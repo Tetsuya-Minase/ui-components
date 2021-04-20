@@ -9,7 +9,7 @@ export const AccordionDefault = () => ({
     accordionItemList: [
       {
         title: 'アコーディオンタイトル',
-        detail: ['ここに折りたたまれてる内容']
+        details: ['ここに折りたたまれてる内容']
       }
     ]
   }
@@ -21,7 +21,7 @@ export const Accordion2detail = () => ({
     accordionItemList: [
       {
         title: 'アコーディオンタイトル',
-        detail: ['ここに折りたたまれてる内容', 'ここに折りたたまれてる内容2']
+        details: ['ここに折りたたまれてる内容', 'ここに折りたたまれてる内容2']
       }
     ]
   }
@@ -33,11 +33,11 @@ export const Accordion2item = () => ({
     accordionItemList: [
       {
         title: 'アコーディオンタイトル1',
-        detail: ['ここに折りたたまれてる内容1', 'ここに折りたたまれてる内容2', 'ここに折りたたまれてる内容3']
+        details: ['ここに折りたたまれてる内容1', 'ここに折りたたまれてる内容2', 'ここに折りたたまれてる内容3']
       },
       {
         title: 'アコーディオンタイトル2',
-        detail: ['ここに折りたたまれてる内容']
+        details: ['ここに折りたたまれてる内容']
       }
 
     ]

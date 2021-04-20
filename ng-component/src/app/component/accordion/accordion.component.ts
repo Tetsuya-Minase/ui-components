@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 
 export class AccordionComponent {
-  @Input() accordionItemList: Array<{readonly title: string, readonly detail: string[]}>;
+  @Input() accordionItemList: Array<{readonly title: string, readonly details: string[]}>;
 
 }
