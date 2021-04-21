@@ -1,0 +1,32 @@
+.accordion__title {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  &::after {
+    content: '\ff0b';
+    display: inline-block;
+  }
+}
+.accordion__checkbox:checked + .accordion__title::after {
+  content: '\ff0d';
+}
+.accordion__checkbox {
+  display: none;
+}
+@keyframes show{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+.accordion__detail__list {
+  display: none;
+}
+.accordion__checkbox:checked + .accordion__title + .accordion__detail {
+  & > .accordion__detail__list {
+    display: block;
+    animation: show 0.3s linear 0s;
+  }
+}
