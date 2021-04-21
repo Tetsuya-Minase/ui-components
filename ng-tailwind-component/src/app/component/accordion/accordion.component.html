@@ -1,0 +1,17 @@
+<div class="text-2xl">
+  <ul>
+    <li *ngFor="let item of accordionItemList; let i = index">
+      <input class="hidden accordion__checkbox" type="checkbox" [id]="'accordion__check' + i"/>
+      <label class="flex w-96 accordion__title" [for]="'accordion__check' + i">
+        {{item.title}}
+      </label>
+      <div class="ml-4 accordion__detail">
+        <ul class="hidden accordion__detail__list">
+          <li *ngFor="let detail of item.details">
+            {{detail}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
