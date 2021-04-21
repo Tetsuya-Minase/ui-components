@@ -81,12 +81,12 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".accordion__title::after {\n  // display: flex;\n  // justify-content: space-between;\n  // width: 300px;\n  // &::after {\n    content: '\\ff0b';\n    display: inline-block;\n  // }\n}\n.accordion__checkbox:checked + .accordion__title::after {\n  content: '\\ff0d';\n}\n// .accordion__checkbox {\n//   display: none;\n// }\n@keyframes show{\n  from{\n      opacity: 0;\n  }\n  to{\n      opacity: 1;\n  }\n}\n// .accordion__detail__list {\n//   display: none;\n// }\n.accordion__checkbox:checked + .accordion__title + .accordion__detail {\n  & > .accordion__detail__list {\n    display: block;\n    animation: show 0.3s linear 0s;\n  }\n}\n",
+                    "data": ".accordion__title::after {\n  content: \"\\ff0b\";\n  display: inline-block;\n}\n.accordion__checkbox:checked + .accordion__title::after {\n  content: \"\\ff0d\";\n}\n@keyframes show {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.accordion__checkbox:checked + .accordion__title + .accordion__detail {\n  & > .accordion__detail__list {\n    display: block;\n    animation: show 0.3s linear 0s;\n  }\n}\n",
                     "styleUrl": "./accordion.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div >\n  <ul>\n    <li *ngFor=\"let item of accordionItemList; let i = index\">\n      <input class=\"hidden accordion__checkbox\" type=\"checkbox\" [id]=\"'accordion__check' + i\"/>\n      <label class=\"flex justify-center w-96 accordion__title\" [for]=\"'accordion__check' + i\">\n        {{item.title}}\n      </label>\n      <div class=\"accordion__detail\">\n        <ul class=\"hidden accordion__detail__list\">\n          <li *ngFor=\"let detail of item.details\">\n            {{detail}}\n          </li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n</div>\n"
+            "templateData": "<div class=\"text-2xl\">\n  <ul>\n    <li *ngFor=\"let item of accordionItemList; let i = index\">\n      <input class=\"hidden accordion__checkbox\" type=\"checkbox\" [id]=\"'accordion__check' + i\"/>\n      <label class=\"flex w-96 accordion__title\" [for]=\"'accordion__check' + i\">\n        {{item.title}}\n      </label>\n      <div class=\"ml-4 accordion__detail\">\n        <ul class=\"hidden accordion__detail__list\">\n          <li *ngFor=\"let detail of item.details\">\n            {{detail}}\n          </li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n</div>\n"
         },
         {
             "name": "AppComponent",
@@ -201,7 +201,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@charset \"UTF-8\";\n\n$button-bg: #fff;\n$button-border: #000;\n$button-font: #333;\n$button-bg-primary: #007bff;\n$button-border-primary: #007bff;\n$button-font-primary: #fff;\n\n.button {\n  width: 150px;\n  height: 50px;\n  background-color: $button-bg;\n  border: 1px solid $button-border;\n  color: $button-font;\n  font-size: 16px;\n}\n\n.button--primary {\n  background-color: $button-bg-primary;\n  border: 1px solid $button-border-primary;\n  border-radius: 5px;\n  color: $button-font-primary;\n}\n\n.button--small {\n  width: 75px;\n  height: 30px;\n  font-size: 10px;\n}\n\n.button--large {\n  width: 300px;\n  height: 100px;\n  font-size: 24px;\n}",
+                    "data": "",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -454,17 +454,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\n  production: false\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\n  production: true\n}"
             },
             {
                 "name": "Image100x100",
@@ -659,16 +659,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -677,6 +667,16 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
                 }
             ],
             "src/app/component/image/image.component.stories.ts": [
