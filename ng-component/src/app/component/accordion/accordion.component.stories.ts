@@ -1,10 +1,12 @@
-import { AccordionComponent } from './accordion.component';
+import {AccordionComponent} from './accordion.component';
+import {Meta, Story} from '@storybook/angular';
+
 export default {
   title: 'accordion component',
-};
+  component: AccordionComponent
+} as Meta;
 
-export const AccordionDefault = () => ({
-  component: AccordionComponent,
+export const AccordionDefault: Story = () => ({
   props: {
     accordionItemList: [
       {
@@ -15,8 +17,7 @@ export const AccordionDefault = () => ({
   }
 });
 
-export const Accordion2detail = () => ({
-  component: AccordionComponent,
+export const Accordion2detail: Story = () => ({
   props: {
     accordionItemList: [
       {
@@ -27,7 +28,7 @@ export const Accordion2detail = () => ({
   }
 });
 
-export const Accordion2item = () => ({
+export const Accordion2item: Story = () => ({
   component: AccordionComponent,
   props: {
     accordionItemList: [
