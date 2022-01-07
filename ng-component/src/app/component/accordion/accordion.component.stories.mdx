@@ -1,0 +1,56 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import {AccordionComponent} from './accordion.component';
+
+<Meta title='component/accordion' component={AccordionComponent} />
+
+# accordion.component
+`accordion.component` stories.
+
+## default
+<Story name='default'>
+  {{
+    component: AccordionComponent,
+    props: {
+    accordionItemList: [
+          {
+            title: 'アコーディオンタイトル',
+            details: ['ここに折りたたまれてる内容']
+          }
+        ]
+    }
+  }}
+</Story>
+
+## 2 details
+<Story name='2 details'>
+  {{
+    component: AccordionComponent,
+    props: {
+      accordionItemList: [
+          {
+            title: 'アコーディオンタイトル',
+            details: ['ここに折りたたまれてる内容', 'ここに折りたたまれてる内容2']
+          }
+        ]
+    }
+  }}
+</Story>
+
+## 2 items
+<Story name='2 items'>
+  {{
+    component: AccordionComponent,
+    props: {
+      accordionItemList: [
+        {
+          title: 'アコーディオンタイトル1',
+          details: ['ここに折りたたまれてる内容1', 'ここに折りたたまれてる内容2', 'ここに折りたたまれてる内容3']
+        },
+        {
+          title: 'アコーディオンタイトル2',
+          details: ['ここに折りたたまれてる内容']
+        }
+      ]
+    }
+  }}
+</Story>
