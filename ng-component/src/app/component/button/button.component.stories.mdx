@@ -1,0 +1,39 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import { ButtonComponent } from './button.component';
+
+<Meta title='component/button' component={ButtonComponent}/>
+
+# button.component
+`button.component` stories.
+
+## default button
+<Story name='default'>
+  {{
+    component: ButtonComponent,
+    props: {text: 'default'}
+  }}
+</Story>
+
+## small button
+<Story name='small'>
+  {{
+    component: ButtonComponent,
+    props: {text: 'small button', size: 'small'}
+  }}
+</Story>
+
+## large button
+<Story name='large'>
+  {{
+    component: ButtonComponent,
+    props: {text: 'large button', size: 'large'}
+  }}
+</Story>
+
+## primary button
+<Story name='primary'>
+  {{
+    component: ButtonComponent,
+    props: {text: 'primary button', type: 'primary'}
+  }}
+</Story>

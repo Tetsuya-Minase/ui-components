@@ -1,0 +1,67 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import { ImageComponent } from './image.component';
+
+<Meta title='component/image' component={ImageComponent}/>
+
+# image.component
+`image.component` stories.
+
+## default image
+<Story name='default'>
+  {{
+    component: ImageComponent,
+    props: {
+      src: '/assets/images/100x100.png',
+      width: 200,
+      height: 200
+    }
+  }}
+</Story>
+
+## image 100x100
+<Story name='100x100'>
+  {{
+    component: ImageComponent,
+    props: {
+      src: '/assets/images/100x100.png',
+      width: 100,
+      height: 100
+    }
+  }}
+</Story>
+
+## image 200x400
+<Story name='200x400'>
+  {{
+    component: ImageComponent,
+    props: {
+      src: '/assets/images/100x100.png',
+      width: 200,
+      height: 400
+    }
+  }}
+</Story>
+
+## image 400x200
+<Story name='400x200'>
+  {{
+    component: ImageComponent,
+    props: {
+      src: '/assets/images/100x100.png',
+      width: 400,
+      height: 200
+    }
+  }}
+</Story>
+
+## image 400x400
+<Story name='400x400'>
+  {{
+    component: ImageComponent,
+    props: {
+      src: '/assets/images/100x100.png',
+      width: 400,
+      height: 400
+    }
+  }}
+</Story>
